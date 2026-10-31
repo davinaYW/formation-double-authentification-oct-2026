@@ -1,0 +1,1127 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formation APF France handicap : comprendre et utiliser la double authentification forte pour sécuriser les accès à OSIRIS.">
+  <meta name="theme-color" content="#00536A">
+  <title>Formation – Double authentification forte | APF France handicap</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #00536A;
+      --orange: #F7A916;
+      --ink: #1D1D1B;
+      --beige: #F6EADC;
+      --light: #FBF5EC;
+      --white: #FFFFFF;
+      --grey: #666666;
+      --border: #DED8CF;
+      --shadow: 0 8px 24px rgba(0, 50, 65, .09);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--teal);
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Raleway", Arial, sans-serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0 0 20px;
+    }
+
+    h2 {
+      color: var(--teal);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      margin: 0 0 22px;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      color: var(--teal);
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 10px;
+      z-index: 1000;
+      padding: 12px 16px;
+      background: white;
+      color: var(--teal);
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* En-tête */
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: block;
+      width: 230px;
+      max-height: 75px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .header-label {
+      color: var(--teal);
+      font-weight: 700;
+      text-align: right;
+      font-size: .95rem;
+    }
+
+    /* Bannière */
+
+    .hero {
+      position: relative;
+      background: var(--teal);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-height: 430px;
+      display: block;
+      object-fit: cover;
+      opacity: .82;
+    }
+
+    .hero-content {
+      padding: 58px 0 62px;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      max-width: 850px;
+    }
+
+    .hero .intro {
+      max-width: 760px;
+      font-size: 1.15rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--ink);
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-meta span {
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 8px;
+      padding: 8px 13px;
+      font-weight: 600;
+    }
+
+    /* Boutons */
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-orange {
+      background: var(--orange);
+      color: var(--ink);
+    }
+
+    .button-white {
+      background: var(--white);
+      color: var(--teal);
+    }
+
+    .button-teal {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* Sections */
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+
+    .section-beige {
+      background: var(--light);
+    }
+
+    .section-teal {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .section-teal h2,
+    .section-teal h3 {
+      color: var(--white);
+    }
+
+    /* Cartes */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--beige);
+      color: var(--teal);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .highlight {
+      border-left: 5px solid var(--orange);
+      padding: 16px 20px;
+      background: var(--light);
+      border-radius: 0 10px 10px 0;
+      margin: 24px 0;
+    }
+
+    /* Profils */
+
+    .profile {
+      border-top: 5px solid var(--orange);
+    }
+
+    .profile ul {
+      padding-left: 20px;
+    }
+
+    /* Déroulé accordéons */
+
+    .programme-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    details.module {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,.04);
+    }
+
+    details.module summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    details.module summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.module summary::after {
+      content: "+";
+      font-size: 1.7rem;
+      line-height: 1;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    details.module[open] summary::after {
+      content: "−";
+    }
+
+    .module-content {
+      padding: 0 24px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .duration {
+      color: var(--grey);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .module-content h4 {
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    /* Accessibilité */
+
+    .accessibility-box {
+      background: var(--white);
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 28px;
+      border-left: 6px solid var(--orange);
+    }
+
+    /* Vidéo */
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 850px;
+      aspect-ratio: 16 / 9;
+      margin: 28px auto;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Documents */
+
+    .document-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .document {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .document-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .document a {
+      font-weight: 700;
+    }
+
+    /* Affiche */
+
+    .poster {
+      display: block;
+      max-width: 650px;
+      width: 100%;
+      margin: 28px auto 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Lieu */
+
+    .map-frame {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 28px;
+      max-width: 720px;
+    }
+
+    /* Pied de page */
+
+    footer {
+      background: #003E50;
+      color: var(--white);
+      padding: 38px 0;
+    }
+
+    footer a {
+      color: var(--white);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .back-top {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .document-list {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-label {
+        text-align: left;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero-content {
+        padding: 42px 0;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+      }
+
+      details.module summary {
+        padding: 17px;
+      }
+
+      .module-content {
+        padding: 0 17px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+  <!-- EN-TÊTE -->
+  <header>
+    <div class="container header-inner">
+      <a href="https://www.apf-francehandicap.org/" aria-label="Site officiel APF France handicap">
+        <img
+          class="logo"
+          src="APF France handicap - logo-RI.png"
+          alt="APF France handicap"
+          onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';"
+        >
+        <strong id="logo-fallback" style="display:none;color:#00536A;font-size:1.2rem;">
+          APF France handicap
+        </strong>
+      </a>
+      <div class="header-label">
+        Formation interne<br>
+        Sécurisation des accès numériques
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- BANNIÈRE -->
+    <div class="hero">
+      <img
+        class="hero-image"
+        src="311026_Foto MFA.webp"
+        alt=""
+        aria-hidden="true"
+      >
+      <div class="container hero-content">
+        <span class="hero-tag">Formation à distance · Teams</span>
+        <h1>Se connecter en sécurité : la double authentification forte</h1>
+        <p class="intro">
+          Comprendre les enjeux de la double authentification forte et apprendre
+          à se connecter à OSIRIS en toute sécurité, avec son moyen
+          d'authentification.
+        </p>
+        <div class="hero-meta">
+          <span>Avril-mai 2027 – dates communiquées ultérieurement</span>
+          <span>1 h 30 en direct</span>
+          <span>Jusqu'à 2 h avec la préparation</span>
+        </div>
+        <p style="margin-top:28px;">
+          <a class="button button-orange" href="#programme">Découvrir le programme</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- PRÉSENTATION -->
+    <section>
+      <div class="container">
+        <div class="section-intro">
+          <h2>Pourquoi cette formation ?</h2>
+          <p>
+            La double authentification forte renforce la sécurité des accès
+            aux outils numériques en santé. Elle contribue à protéger les
+            données des personnes accompagnées et à garantir la traçabilité
+            des accès professionnels.
+          </p>
+          <p>
+            Cette formation accompagne les professionnels des trois SMR pilotes
+            dans l'utilisation de leur moyen d'authentification pour accéder
+            au logiciel métier OSIRIS.
+          </p>
+        </div>
+
+        <div class="highlight">
+          <strong>À retenir :</strong> après une authentification forte,
+          la session peut être utilisée pendant une durée maximale de
+          4 heures consécutives sans renouveler la double authentification,
+          selon les règles présentées dans le programme.
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-number">1</div>
+            <h3>Comprendre</h3>
+            <p>
+              Identifier pourquoi la double authentification protège
+              les patients, les professionnels et les accès.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">2</div>
+            <h3>Pratiquer</h3>
+            <p>
+              Réaliser une connexion complète à OSIRIS avec son moyen
+              d'authentification.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">3</div>
+            <h3>Réagir</h3>
+            <p>
+              Savoir quoi faire en cas d'oubli de carte, de téléphone
+              déchargé ou de remplacement.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMATIONS PRATIQUES -->
+    <section class="section-beige">
+      <div class="container">
+        <h2>Les informations pratiques</h2>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Public concerné</h3>
+            <p>
+              Tous les professionnels des trois SMR pilotes qui accèdent
+              au logiciel métier OSIRIS, quels que soient leur métier
+              et leur aisance avec l'informatique.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Format et durée</h3>
+            <p>
+              Formation 100 % à distance sur Microsoft Teams.
+              1 h 30 en direct, avec environ 20 minutes de préparation
+              en amont. Durée maximale : 2 heures par personne.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Effectif</h3>
+            <p>
+              Groupes de 15 à 20 participants par séance.
+              Animation prévue avec un animateur et un co-animateur,
+              sous réserve de confirmation.
+            </p>
+          </article>
+        </div>
+
+        <div class="highlight">
+          <strong>Prérequis :</strong> aucun niveau informatique particulier
+          n'est nécessaire. Pensez à avoir à proximité votre carte CPS ou PSI,
+          votre smartphone ou la clé de dépannage de votre établissement,
+          selon votre profil.
+        </div>
+      </div>
+    </section>
+
+    <!-- PARCOURS ADAPTÉS -->
+    <section>
+      <div class="container">
+        <div class="section-intro">
+          <h2>Un parcours adapté à votre situation</h2>
+          <p>
+            Les modalités de connexion et les situations professionnelles
+            diffèrent selon les profils. La formation prévoit des adaptations
+            pour tenir compte de ces réalités.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card profile">
+            <h3>Profil 1 – Direction, cadres et administratifs</h3>
+            <p><strong>Moyen prévu :</strong> carte PSI avec lecteur.</p>
+            <p>
+              Votre accès à OSIRIS est strictement limité aux données
+              administratives des patients, sans accès aux données
+              médicales ou de santé.
+            </p>
+            <ul>
+              <li>Briefing spécifique de 45 minutes.</li>
+              <li>55 minutes de classe virtuelle pour l'atelier et les cas pratiques.</li>
+              <li>Rôle dans la gestion des accès et du stock de clés FIDO.</li>
+            </ul>
+            <p><strong>Durée totale :</strong> 2 h avec préparation.</p>
+          </article>
+
+          <article class="card profile">
+            <h3>Profil 2 – Soins et accompagnement</h3>
+            <p><strong>Moyens prévus :</strong> e-CPS, carte CPS ou clé FIDO.</p>
+            <p>
+              La formation prend en compte les contraintes des soins,
+              les horaires décalés et les professionnels qui ne disposent
+              pas d'un smartphone ou ne souhaitent pas utiliser le leur.
+            </p>
+            <ul>
+              <li>Atelier pratique de connexion.</li>
+              <li>Répétition du geste pour gagner en autonomie.</li>
+              <li>Créneaux adaptés aux équipes en horaires décalés.</li>
+            </ul>
+            <p><strong>Durée totale :</strong> 1 h 50 avec préparation.</p>
+          </article>
+
+          <article class="card profile">
+            <h3>Profil 3 – Professionnels en situation de handicap visuel</h3>
+            <p><strong>Moyen :</strong> en cours d'arbitrage.</p>
+            <p>
+              Le parcours prévoit un échange individuel préalable afin
+              d'identifier un moyen de connexion compatible avec les outils
+              d'assistance utilisés.
+            </p>
+            <ul>
+              <li>Test individuel préalable.</li>
+              <li>Temps adapté sans pénalité.</li>
+              <li>Supports accessibles et consignes vocalisées.</li>
+            </ul>
+            <p><strong>Durée totale :</strong> jusqu'à 2 h avec préparation et test.</p>
+          </article>
+        </div>
+
+        <p class="duration" style="margin-top:18px;">
+          Les moyens d'authentification du profil 3 et certaines modalités
+          techniques restent à confirmer.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROGRAMME -->
+    <section class="section-beige" id="programme">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Le programme de la formation</h2>
+          <p>
+            La séance suit une pédagogie active en trois temps :
+            <strong>Amorce, Apport, Ancrage</strong>. Chaque séquence alterne
+            échanges, explications courtes et exercices pratiques.
+          </p>
+          <p>
+            Sélectionnez chaque étape pour découvrir son contenu.
+          </p>
+        </div>
+
+        <div class="programme-list">
+
+          <details class="module">
+            <summary>
+              S0 – Avant la séance : se préparer
+              <span class="duration">20 min</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Identifier son niveau, ses besoins et ses attentes avant
+                la formation.
+              </p>
+              <h4>Au programme</h4>
+              <ul>
+                <li>Questionnaire d'auto-positionnement : 10 minutes.</li>
+                <li>Capsule vidéo de présentation : 5 minutes.</li>
+                <li>Expression des attentes : 5 minutes.</li>
+              </ul>
+              <p>
+                Le questionnaire permet également de signaler les besoins
+                d'accessibilité ou d'accompagnement.
+              </p>
+            </div>
+          </details>
+
+          <details class="module">
+            <summary>
+              S1 – Pourquoi et ce qui change
+              <span class="duration">20 min</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Comprendre pourquoi la double authentification protège
+                les patients et les professionnels.
+              </p>
+              <h4>Au programme</h4>
+              <ul>
+                <li>Échange à partir de situations vécues.</li>
+                <li>Présentation des enjeux de sécurité et de traçabilité.</li>
+                <li>Explication de la règle des 4 heures maximum.</li>
+                <li>Reformulation avec ses propres mots.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="module">
+            <summary>
+              S2 – Atelier pratique de connexion
+              <span class="duration">40 min</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Réaliser une connexion complète à OSIRIS avec son moyen
+                d'authentification.
+              </p>
+              <h4>Au programme</h4>
+              <ul>
+                <li>Vérification du matériel disponible.</li>
+                <li>Démonstration et explication des étapes.</li>
+                <li>Exercices guidés selon le profil.</li>
+                <li>Répétition du geste de connexion.</li>
+                <li>Dernier essai réalisé de manière autonome.</li>
+              </ul>
+              <div class="highlight">
+                <strong>Objectif pédagogique :</strong> réussir une connexion
+                complète en moins de trois essais, le dernier sans guidage.
+              </div>
+            </div>
+          </details>
+
+          <details class="module">
+            <summary>
+              S3 – Quand ça ne marche pas
+              <span class="duration">15 min</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Identifier la bonne conduite à tenir en cas de difficulté
+                ou de blocage.
+              </p>
+              <h4>Situations travaillées</h4>
+              <ul>
+                <li>Carte oubliée, perdue ou volée.</li>
+                <li>Téléphone déchargé ou indisponible.</li>
+                <li>Arrivée d'un remplaçant ou d'un intérimaire.</li>
+                <li>Situation de blocage pendant un horaire de nuit.</li>
+              </ul>
+              <p>
+                Les solutions de dépannage s'appuient notamment sur les clés
+                FIDO de la structure et les contacts identifiés.
+              </p>
+              <p>
+                Les modalités d'accès au stock de clés FIDO la nuit et
+                le week-end restent à confirmer.
+              </p>
+            </div>
+          </details>
+
+          <details class="module">
+            <summary>
+              S4 – Engagement et évaluation
+              <span class="duration">15 min</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Vérifier les acquis et repartir avec des repères concrets
+                à appliquer au quotidien.
+              </p>
+              <h4>Au programme</h4>
+              <ul>
+                <li>Expression des éventuelles inquiétudes restantes.</li>
+                <li>Présentation d'une fiche réflexe adaptée au profil.</li>
+                <li>Engagement individuel sur une pratique de sécurité.</li>
+                <li>Quiz de cinq questions.</li>
+              </ul>
+              <div class="highlight">
+                <strong>Évaluation :</strong> le programme fixe un objectif
+                de 90 % de réussite au quiz. Le livret stagiaire mentionne
+                également un seuil de validation de 4 bonnes réponses sur 5.
+                Ces deux indications sont à harmoniser avant la formation.
+              </div>
+            </div>
+          </details>
+
+          <details class="module">
+            <summary>
+              S5 – Après la séance : suivi et accompagnement
+              <span class="duration">J+7 à M+3</span>
+            </summary>
+            <div class="module-content">
+              <h4>Objectif</h4>
+              <p>
+                Ancrer les bons réflexes et accompagner les professionnels
+                dans leur pratique quotidienne.
+              </p>
+              <ul>
+                <li><strong>J+7 :</strong> rappel des points essentiels et question flash.</li>
+                <li><strong>M+1 :</strong> mini-défi d'autonomie.</li>
+                <li><strong>M+1 à M+3 :</strong> accompagnement et permanences d'aide en visio.</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITÉ -->
+    <section>
+      <div class="container">
+        <h2>Une formation attentive à l'accessibilité</h2>
+
+        <div class="accessibility-box">
+          <p>
+            Les modalités pédagogiques sont pensées pour faciliter
+            la participation de chacun.
+          </p>
+          <ul>
+            <li>Les informations affichées à l'écran sont également expliquées oralement.</li>
+            <li>Aucune information ne repose uniquement sur la couleur.</li>
+            <li>Les exercices peuvent être réalisés à l'oral ou par le chat.</li>
+            <li>Les supports sont prévus en langage simple et en grands caractères.</li>
+            <li>Le temps est adapté aux besoins, sans pénalité.</li>
+            <li>Un échange individuel préalable est prévu pour les besoins liés au handicap visuel.</li>
+          </ul>
+          <p>
+            Certaines modalités techniques, notamment la compatibilité
+            des fonctionnalités Teams avec les lecteurs d'écran,
+            restent à vérifier.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDÉO -->
+    <section class="section-beige">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Une première vidéo pour comprendre</h2>
+          <p>
+            Découvrez cette courte vidéo de présentation avant de participer
+            à la formation.
+          </p>
+        </div>
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Pauoh3rslMo"
+            title="Vidéo de présentation de la double authentification forte"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p style="text-align:center;">
+          <a href="https://www.youtube.com/shorts/Pauoh3rslMo"
+             target="_blank" rel="noopener noreferrer">
+            Voir la vidéo directement sur YouTube
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section id="documents">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Les documents de la formation</h2>
+          <p>
+            Retrouvez ici les documents utiles pour préparer votre
+            participation et consulter le contenu de la formation.
+          </p>
+        </div>
+
+        <div class="document-list">
+          <div class="document">
+            <span class="document-icon" aria-hidden="true">📄</span>
+            <div>
+              <strong>Programme de formation</strong>
+              <p>Objectifs, organisation et déroulé pédagogique.</p>
+              <a href="311026%20MAJ%20Programme%20MFA.pdf" target="_blank">
+                Consulter ou télécharger le programme (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div class="document">
+            <span class="document-icon" aria-hidden="true">📘</span>
+            <div>
+              <strong>Livret stagiaire</strong>
+              <p>Repères, exercices et informations pratiques.</p>
+              <a href="311026_Livret_stagiaire_APF%20VF.pdf" target="_blank">
+                Consulter ou télécharger le livret (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:48px;">L'affiche de la formation</h3>
+        <p>
+          Retrouvez les informations essentielles sur le support
+          de communication de la formation.
+        </p>
+
+        <a href="311026_Affiche%20Formation.png" target="_blank">
+          <img
+            class="poster"
+            src="311026_Affiche%20Formation.png"
+            alt="Affiche de la formation à la double authentification forte"
+            loading="lazy"
+          >
+        </a>
+      </div>
+    </section>
+
+    <!-- LIEU / ORGANISATION -->
+    <section class="section-beige">
+      <div class="container">
+        <h2>Modalités de participation</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Formation à distance</h3>
+            <p>
+              Les sessions se déroulent à 100 % à distance sur Microsoft Teams,
+              depuis le poste de travail du participant.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Dates</h3>
+            <p>
+              <strong>Avril-mai 2027</strong><br>
+              Dates et créneaux communiqués ultérieurement.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Lieu de référence</h3>
+            <p>
+              Siège APF France handicap<br>
+              17 boulevard Auguste Blanqui<br>
+              75013 Paris
+            </p>
+            <p>
+              La formation elle-même se déroule à distance.
+            </p>
+          </article>
+        </div>
+
+        <div style="margin-top:28px;">
+          <iframe
+            class="map-frame"
+            title="Carte de localisation du siège APF France handicap à Paris"
+            src="https://www.google.com/maps?q=17%20Boulevard%20Auguste%20Blanqui%2075013%20Paris&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <p>
+            <a href="https://www.google.com/maps/search/?api=1&query=17+Boulevard+Auguste+Blanqui+75013+Paris"
+               target="_blank" rel="noopener noreferrer">
+              Ouvrir l'adresse dans Google Maps
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <div class="container">
+        <h2>Une question sur la formation ?</h2>
+        <div class="contact-card">
+          <p>
+            Pour toute question relative à l'organisation de la formation,
+            vous pouvez contacter :
+          </p>
+          <p>
+            <strong>Marie Formatrice</strong><br>
+            <a href="mailto:marie.formatrice@gmail.com">
+              marie.formatrice@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>APF France handicap</strong>
+        <p style="margin:6px 0 0;">
+          Formation – Double authentification forte
+        </p>
+      </div>
+      <div>
+        <a href="https://www.apf-francehandicap.org/"
+           target="_blank" rel="noopener noreferrer">
+          Site officiel APF France handicap
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <a class="back-top" href="#top">↑ Retour en haut de page</a>
+    </div>
+  </footer>
+
+</body>
+</html>
