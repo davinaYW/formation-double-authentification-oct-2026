@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La double authentification forte en santé : formation avril-mai 2027 | APF France handicap</title>
+<meta name="description" content="Formation courte, 100 % à distance sur Teams, pour apprendre à se connecter avec la double authentification forte (PGSSI-S / RIE) et savoir quoi faire en cas de blocage. Avril-mai 2027.">
+<meta name="theme-color" content="#00536A">
+<link rel="icon" href="logo.png">
+<style>
+/* Charte APF France handicap : bleu-vert #00536A, orange #F7A916 (accents uniquement, jamais pour du texte),
+   noir doux #1D1D1B, beige #F6EADC. Police : pile système lisible (aucun appel à un service externe).
+   Pour utiliser Poppins : déposer poppins-regular.woff2 et poppins-bold.woff2 à la racine (licence à vérifier),
+   puis décommenter le bloc @font-face ci-dessous. */
+/*
+@font-face{font-family:"Poppins";src:url("poppins-regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("poppins-bold.woff2") format("woff2");font-weight:700;font-display:swap}
+*/
+:root{--teal:#00536A;--orange:#F7A916;--ink:#1D1D1B;--beige:#F6EADC;--light:#FBF5EC;--line:#CDBFAE}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;font-family:/*"Poppins",*/Verdana,Tahoma,"Segoe UI",Arial,sans-serif;font-size:1.125rem;line-height:1.7;color:var(--ink);background:#fff}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+a{color:var(--teal);text-underline-offset:.2em}
+a:hover{text-decoration-thickness:.15em}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px #fff}
+.skip{position:absolute;left:-999px;top:0;background:var(--teal);color:#fff;padding:.75rem 1rem;z-index:10}
+.skip:focus{left:0}
+h1,h2,h3{line-height:1.3;color:var(--teal)}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:.4rem 0 .6rem}
+h2{font-size:1.6rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:4px solid var(--orange)}
+h3{font-size:1.2rem;margin:1.2rem 0 .4rem}
+section{padding:2.5rem 0}
+section+section{border-top:1px solid var(--line)}
+header.top{background:var(--beige);border-bottom:6px solid var(--orange)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem 2rem;padding-top:1.25rem;padding-bottom:1.5rem}
+.top img.logo{height:84px;width:auto}
+.top .intro{flex:1 1 20rem}
+.accroche{font-size:1.25rem;margin:0}
+.tag{display:inline-block;background:var(--teal);color:#fff;font-weight:700;padding:.2rem .8rem;border-radius:.3rem;font-size:1rem}
+.banner{display:block;width:100%;height:clamp(10rem,28vw,18rem);object-fit:cover}
+dl.key{display:grid;grid-template-columns:1fr;gap:.9rem;margin:0}
+dl.key div{background:var(--light);border-left:6px solid var(--teal);padding:.8rem 1rem}
+dt{font-weight:700;color:var(--teal)}
+dd{margin:.1rem 0 0}
+@media (min-width:44rem){dl.key{grid-template-columns:1fr 1fr}}
+ul.check{padding-left:1.2rem}
+ul.check li{margin:.35rem 0}
+.todo{background:#FDE7B3;color:var(--ink);padding:0 .3rem;border-radius:.2rem}
+/* Accordéon sans JavaScript */
+details{border:2px solid var(--teal);border-radius:.5rem;margin:.8rem 0;background:#fff}
+summary{cursor:pointer;padding:.9rem 1.1rem;font-weight:700;color:var(--teal);font-size:1.15rem;list-style:none;display:flex;gap:.8rem;align-items:center;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.6rem;line-height:1;font-weight:700;flex:none}
+details[open]>summary::after{content:"\2212"}
+details[open]>summary{background:var(--beige);border-bottom:2px solid var(--teal)}
+.dur{font-weight:400;color:var(--ink);font-size:1rem;white-space:nowrap}
+.panel{padding:.4rem 1.1rem 1rem}
+.panel p{margin:.5rem 0}
+.panel ul{margin:.4rem 0;padding-left:1.3rem}
+.panel .goal{background:var(--light);border-left:6px solid var(--orange);padding:.6rem .9rem;margin:.7rem 0}
+table{border-collapse:collapse;width:100%;font-size:1rem}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--teal);color:#fff}
+tr:nth-child(even) td{background:var(--light)}
+/* Vidéo et carte : chargées au clic */
+.media{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start}
+.video{flex:0 1 20rem;width:100%;max-width:20rem}
+.frame{position:relative;background:var(--beige);border:2px solid var(--teal);border-radius:.5rem;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem}
+.frame.v{aspect-ratio:9/16}
+.frame.m{width:100%;min-height:16rem}
+.frame.m iframe{min-height:16rem}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn{display:inline-block;background:var(--teal);color:#fff;font:inherit;font-weight:700;text-decoration:none;padding:.8rem 1.3rem;border:2px solid var(--teal);border-radius:.4rem;cursor:pointer;min-height:2.75rem}
+.btn:hover{background:#fff;color:var(--teal)}
+.btn.alt{background:#fff;color:var(--teal)}
+.btn.alt:hover{background:var(--teal);color:#fff}
+.dl{list-style:none;padding:0;display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.dl small{display:block;font-weight:400;margin-top:.15rem}
+figure{margin:0}
+figure img{max-width:100%;height:auto;border:1px solid var(--line)}
+figcaption{font-size:1rem;margin-top:.5rem}
+footer{background:var(--teal);color:#fff;padding:2rem 0;border-top:6px solid var(--orange)}
+footer a{color:#fff}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:flex-start}
+footer .btn{background:#fff;color:var(--teal);border-color:#fff}
+footer .btn:hover{background:var(--teal);color:#fff}
+.small{font-size:.95rem}
+@media (max-width:40rem){
+ table,thead,tbody,tr,th,td{display:block;width:100%}
+ thead{position:absolute;left:-999px}
+ tr{border:1px solid var(--line);margin:0 0 .8rem}
+ td,th{border:0}
+ td::before{content:attr(data-l) " : ";font-weight:700;color:var(--teal)}
+ .dur{white-space:normal}
+}
+@media print{.skip,.btn,iframe{display:none}details{border:1px solid #000}details>*{display:block}}
+</style>
+</head>
+<body id="haut">
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <img class="logo" src="logo.png" alt="APF France handicap, Risquer l'impossible" height="84">
+    <div class="intro">
+      <p class="tag">Formation · avril-mai 2027 · 100 % à distance</p>
+      <h1>La double authentification forte en santé</h1>
+      <p class="accroche">En moins de 2 heures, apprenez à vous connecter en toute sécurité et sachez quoi faire quand ça ne marche pas.</p>
+    </div>
+  </div>
+</header>
+<!-- Illustration du thème. Image décorative : alt vide. Si l'image porte une information, ajouter une description. -->
+<img class="banner" src="illustration-mfa.webp" alt="" width="1200" height="400" fetchpriority="high">
+
+<main id="contenu">
+
+<section aria-labelledby="t-infos">
+  <div class="wrap">
+    <h2 id="t-infos">L'essentiel en un coup d'œil</h2>
+    <dl class="key">
+      <div><dt>Dates</dt><dd>Avril et mai 2027, avant la phase pilote. Créneaux : <span class="todo">à compléter</span></dd></div>
+      <div><dt>Lieu</dt><dd>100 % à distance, sur Teams, depuis votre poste de travail.</dd></div>
+      <div><dt>Durée</dt><dd>2 h maximum par personne : environ 20 minutes à faire avant la séance, puis 1 h 30 en direct.</dd></div>
+      <div><dt>Qui peut venir ?</dt><dd>Les professionnels des 3 SMR pilotes (environ 400 personnes) qui utilisent le logiciel OSIRIS : soin, accompagnement, direction, cadres, administratif.</dd></div>
+      <div><dt>Groupes</dt><dd>15 à 20 personnes, avec un animateur et un co-animateur.</dd></div>
+      <div><dt>Tarif</dt><dd>Formation interne. Tarif : <span class="todo">à confirmer</span></dd></div>
+    </dl>
+
+    <h3>Ce qu'il faut pour suivre la formation</h3>
+    <ul class="check">
+      <li>Aucun niveau informatique n'est demandé.</li>
+      <li>Avoir sous la main votre carte (CPS ou PSI), votre smartphone avec l'application e-CPS, ou la clé de dépannage de votre structure.</li>
+    </ul>
+
+    <h3>Ce que vous saurez faire à la fin</h3>
+    <ul class="check">
+      <li>Expliquer en deux phrases pourquoi la double authentification protège les patients et vos propres accès.</li>
+      <li>Vous connecter seul(e) avec votre moyen (e-CPS, carte CPS, carte PSI ou clé FIDO).</li>
+      <li>Choisir la bonne conduite quand ça ne marche pas : carte oubliée, remplaçant, nuit ou week-end.</li>
+    </ul>
+
+    <h3>Accessibilité et handicap</h3>
+    <p>Un questionnaire avant la séance recense vos besoins (vue, audition, dextérité, troubles « dys », daltonisme). Si vous êtes en situation de handicap visuel, un test individuel est proposé avant la séance avec le moyen de connexion retenu. Chaque exercice se fait au chat ou à l'oral, et il n'y a pas de pénalité de temps. Tout ce qui s'affiche est aussi dit à voix haute.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-prog">
+  <div class="wrap">
+    <h2 id="t-prog">Le programme, étape par étape</h2>
+    <p>Chaque étape suit le même rythme : on part de votre vécu, on voit comment faire, puis on pratique. Cliquez sur une étape pour la lire.</p>
+
+    <details>
+      <summary><span>Trois parcours selon votre profil</span></summary>
+      <div class="panel">
+        <table>
+          <caption class="small" style="text-align:left;padding-bottom:.4rem">Durée totale et organisation selon votre profil</caption>
+          <thead><tr><th scope="col">Votre profil</th><th scope="col">Votre moyen de connexion</th><th scope="col">Votre parcours</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" style="background:var(--light);color:var(--ink)">Direction, cadres, administratif (sans numéro RPPS)</th><td data-l="Moyen">Carte PSI</td><td data-l="Parcours">2 h : 20 min avant la séance, 45 min de briefing entre pairs, 55 min de classe virtuelle.</td></tr>
+            <tr><th scope="row" style="background:var(--light);color:var(--ink)">Soin et accompagnement (inscrit au RPPS)</th><td data-l="Moyen">Application e-CPS ou carte CPS (clé FIDO sans smartphone)</td><td data-l="Parcours">1 h 50 : 20 min avant la séance, puis 1 h 30 de classe virtuelle. Variante pour le personnel de nuit : horaires ajustés pour suivre la séance en journée.</td></tr>
+            <tr><th scope="row" style="background:var(--light);color:var(--ink)">Handicap visuel</th><td data-l="Moyen">Moyen en cours d'arbitrage, testé avec vous avant la séance</td><td data-l="Parcours">2 h : entretien et test individuel, capsule transcrite, puis 1 h 30 de classe virtuelle.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Avant la séance : se situer</span><span class="dur">20 min · à votre rythme</span></summary>
+      <div class="panel">
+        <p class="goal"><strong>Objectif :</strong> repérer votre niveau et vos besoins, et comprendre l'enjeu avant la séance.</p>
+        <ul>
+          <li>Un questionnaire pour vous situer (usage du smartphone, de la carte, des applications) et pour dire vos besoins d'accessibilité, par écrit ou à l'oral.</li>
+          <li>Une capsule vidéo de 5 minutes sur le « pourquoi », sous-titrée et avec transcription.</li>
+          <li>Une fiche d'une page : « La double authentification en 3 phrases ».</li>
+          <li>Une question pour vous : ce qui vous inquiète ou ce que vous attendez de la formation.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Pourquoi et ce qui change</span><span class="dur">20 min · en direct</span></summary>
+      <div class="panel">
+        <p class="goal"><strong>Objectif :</strong> comprendre pourquoi la double authentification protège les patients et vous-même, et savoir qu'après une double authentification forte, on n'a pas à la refaire pendant 4 heures maximum.</p>
+        <ul>
+          <li>Un vote dans la visio : « Avez-vous déjà vu une session ouverte au nom d'un collègue ? »</li>
+          <li>Un exposé court et une démonstration en partage d'écran, décrite à voix haute.</li>
+          <li>À votre tour : vous expliquez avec vos mots, en deux phrases, au chat ou en binôme.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Atelier : je me connecte avec mon moyen</span><span class="dur">40 min · en direct</span></summary>
+      <div class="panel">
+        <p class="goal"><strong>Objectif :</strong> réussir une connexion complète avec votre moyen, puis seul(e), sans aide.</p>
+        <ul>
+          <li>Matériel en main : vous montrez ou décrivez ce que vous avez sous la main. Vous rejoignez un sous-groupe selon votre moyen.</li>
+          <li>Démonstration pas à pas, avec la fiche « Ma connexion » de votre profil.</li>
+          <li>Trois connexions de suite : les deux premières en binôme, la troisième seul(e), sans guidage.</li>
+          <li>Pour les personnes en situation de handicap visuel : vos propres outils, sans chronomètre.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Quand ça ne marche pas</span><span class="dur">15 min · en direct</span></summary>
+      <div class="panel">
+        <p class="goal"><strong>Objectif :</strong> choisir la bonne conduite selon la panne.</p>
+        <ul>
+          <li>Une mise en situation au chat : « Il est 3 h du matin, vous avez oublié votre carte. Que faites-vous ? »</li>
+          <li>La fiche « Quand ça ne marche pas : qui, quoi, en combien de temps » : oubli, perte ou vol, la clé FIDO du stock de la structure ; remplaçant ou intérimaire, une clé FIDO ou la carte déjà détenue ; nuit et week-end, le cadre d'astreinte.</li>
+          <li>Trois situations simulées, avec correction ensemble.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Engagement et évaluation</span><span class="dur">15 min · en direct</span></summary>
+      <div class="panel">
+        <p class="goal"><strong>Objectif :</strong> repartir avec un aide-mémoire et un engagement concret.</p>
+        <ul>
+          <li>« Ce qui m'inquiète encore », en un mot au chat ou à l'oral.</li>
+          <li>Votre fiche réflexe d'une page, à garder à portée de main.</li>
+          <li>Votre engagement : « Dès demain, je… », et deux alternatives au partage d'identifiants.</li>
+          <li>Un quiz de 5 questions, lisible à voix haute, puis un retour à chaud sur la séance.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span>Après la séance : garder le réflexe</span><span class="dur">jusqu'à 3 mois</span></summary>
+      <div class="panel">
+        <ul>
+          <li><strong>7 jours après :</strong> un message de rappel avec une question flash.</li>
+          <li><strong>1 mois après :</strong> un mini-défi, « je me suis connecté(e) sans aide et sans partager de compte ».</li>
+          <li><strong>Pendant 3 mois :</strong> des permanences en visio chaque semaine, avec l'équipe de formation puis avec les relais locaux.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="t-video">
+  <div class="wrap">
+    <h2 id="t-video">Le mot du formateur</h2>
+    <div class="media">
+      <div class="video">
+        <div class="frame v" id="video-frame">
+          <div>
+            <p style="margin:0 0 1rem">La vidéo se charge depuis YouTube quand vous cliquez.</p>
+            <button class="btn" type="button" id="video-btn">Lancer la vidéo</button>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1 1 16rem">
+        <p>Une courte vidéo pour vous présenter la formation.</p>
+        <p><a href="https://www.youtube.com/shorts/Pauoh3rslMo" rel="noopener">Voir la vidéo sur YouTube (nouvel onglet)</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-lieu">
+  <div class="wrap">
+    <h2 id="t-lieu">Où et comment ?</h2>
+    <p><strong>La formation a lieu à distance, sur Teams.</strong> Vous n'avez pas à vous déplacer. Le lien de connexion vous est envoyé avec votre convocation.</p>
+    <p>Siège d'APF France handicap : 17 boulevard Auguste Blanqui, 75013 Paris.</p>
+    <div class="frame m" id="map-frame">
+      <div>
+        <p style="margin:0 0 1rem">La carte se charge depuis Google Maps quand vous cliquez.</p>
+        <button class="btn" type="button" id="map-btn">Afficher la carte</button>
+      </div>
+    </div>
+    <p><a href="https://www.google.com/maps/search/?api=1&amp;query=17+Boulevard+Auguste+Blanqui+75013+Paris" rel="noopener">Ouvrir dans Google Maps (nouvel onglet)</a></p>
+  </div>
+</section>
+
+<section aria-labelledby="t-dl">
+  <div class="wrap">
+    <h2 id="t-dl">Documents à télécharger</h2>
+    <ul class="dl">
+      <li><a class="btn" href="programme.pdf" download>Programme de la formation<small>PDF</small></a></li>
+      <li><a class="btn" href="livret-stagiaire.pdf" download>Livret du stagiaire<small>PDF</small></a></li>
+      <li><a class="btn" href="deroule-pedagogique.pdf" download>Déroulé pédagogique<small>PDF</small></a></li>
+      <li><a class="btn" href="deroule-pedagogique-detaille.pdf" download>Déroulé pédagogique détaillé<small>PDF</small></a></li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="t-aff">
+  <div class="wrap">
+    <h2 id="t-aff">L'affiche</h2>
+    <figure>
+      <a href="affiche-formation.png"><img src="affiche-formation.png" alt="Affiche de la formation sur la double authentification forte en santé, avril-mai 2027" width="600" height="850" loading="lazy" style="max-width:min(24rem,100%)"></a>
+      <figcaption>Cliquez sur l'affiche pour l'agrandir ou l'imprimer.</figcaption>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h2 style="color:#fff;border:0;font-size:1.3rem;margin:0 0 .5rem;padding:0">Contact</h2>
+      <p style="margin:0">Formateur : <span class="todo">prénom, nom</span><br>
+      E-mail : <span class="todo">adresse e-mail</span><br>
+      Téléphone : <span class="todo">numéro</span></p>
+    </div>
+    <div>
+      <h2 style="color:#fff;border:0;font-size:1.3rem;margin:0 0 .5rem;padding:0">Inclusion et handicap</h2>
+      <p style="margin:0"><a href="#" id="lien-handicap">Politique d'inclusion et de gestion du handicap</a><br><span class="small">Lien à remplacer par la page du référent handicap d'APF France handicap.</span></p>
+    </div>
+    <div>
+      <a class="btn" href="#haut">Retour en haut de la page</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:1.5rem"><p class="small" style="margin:0">APF France handicap · Ensemble pour une transition numérique sécurisée, accessible et humaine. · apf-francehandicap.org</p></div>
+</footer>
+
+<script>
+/* Vidéo et carte : le contenu externe ne se charge qu'au clic (confidentialité et sobriété numérique). */
+(function(){
+  function load(frameId,btnId,src,title){
+    var f=document.getElementById(frameId),b=document.getElementById(btnId);
+    if(!f||!b)return;
+    b.addEventListener('click',function(){
+      var i=document.createElement('iframe');
+      i.src=src;i.title=title;i.loading='lazy';i.allowFullscreen=true;
+      i.setAttribute('allow','accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen');
+      i.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      f.innerHTML='';f.appendChild(i);
+    });
+  }
+  load('video-frame','video-btn','https://www.youtube-nocookie.com/embed/Pauoh3rslMo','Mot du formateur : vidéo de présentation de la formation');
+  load('map-frame','map-btn','https://www.google.com/maps?q=17+Boulevard+Auguste+Blanqui,+75013+Paris&output=embed','Carte : siège d\'APF France handicap, 17 boulevard Auguste Blanqui, Paris 13e');
+})();
+</script>
+</body>
+</html>
